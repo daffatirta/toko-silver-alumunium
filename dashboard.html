@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Penjualan - Toko Silver Aluminium</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <div class="header">
+      <h1>📒 Dashboard Penjualan</h1>
+      <p id="userInfo"></p>
+      <button class="btn danger small" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="grid">
+
+      <!-- INPUT TRANSAKSI -->
+      <div class="card">
+        <h2>Input Data Transaksi</h2>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Tanggal</label>
+            <input type="date" id="tanggal">
+          </div>
+
+          <div class="field">
+            <label>Nama</label>
+            <input type="text" id="nama" placeholder="Nama pembeli">
+          </div>
+
+          <div class="field">
+            <label>Alamat</label>
+            <input type="text" id="alamat" placeholder="Alamat pembeli">
+          </div>
+
+          <div class="field">
+            <label>Barang (Nama Produk)</label>
+            <input type="text" id="barang" placeholder="Misal: Pintu Aluminium">
+          </div>
+        </div>
+
+        <hr class="divider"/>
+
+        <h3>Rincian Bahan Barang</h3>
+
+        <div class="bahan-grid">
+          <input type="text" id="namaBahan" placeholder="Nama bahan (contoh: Kaca)">
+          <input type="number" id="jumlahBahan" placeholder="Jumlah">
+          <input type="number" id="hargaBahan" placeholder="Harga per bahan">
+          <button class="btn secondary" onclick="tambahBahan()">+ Tambah</button>
+        </div>
+
+        <div class="bahan-box">
+          <h4>List Bahan</h4>
+          <div id="listBahan" class="list-bahan"></div>
+
+          <div class="total-box">
+            <span><b>Total Sementara:</b></span>
+            <span id="totalSementara">Rp 0</span>
+          </div>
+        </div>
+
+        <button class="btn primary" onclick="simpanTransaksi()">💾 Simpan Transaksi</button>
+        <button class="btn ghost" onclick="batalSemuaData()">↩️ Batal Semua (Reset Form)</button>
+      </div>
+
+      <!-- SEARCH -->
+      <div class="card">
+        <h2>Pencarian Data</h2>
+
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Cari berdasarkan nama...">
+          <button class="btn secondary" onclick="cariData()">Cari</button>
+        </div>
+
+        <p class="hint">🔎 Ketik nama pelanggan lalu klik Cari.</p>
+
+        <hr class="divider"/>
+
+        <h3>Total Pendapatan Keseluruhan</h3>
+        <div class="bahan-box">
+          <div class="total-box">
+            <span><b>Total Pendapatan:</b></span>
+            <span id="totalPendapatan">Rp 0</span>
+          </div>
+        </div>
+
+        <button class="btn danger" onclick="hapusSemuaData()">🗑️ Hapus Semua Riwayat</button>
+      </div>
+
+    </div>
+
+    <!-- RIWAYAT -->
+    <div class="card table-card">
+      <h2>📌 Riwayat Penjualan (Excel Mode)</h2>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Tanggal</th>
+              <th>Nama</th>
+              <th>Alamat</th>
+              <th>Barang</th>
+              <th>Rincian Bahan</th>
+              <th>Total Harga</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabelData"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
